@@ -1,15 +1,17 @@
 {
-    "name": "RealWorld-NuxtJS",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-        "dev": "nuxt"
-    },
-    "devDependencies": {
-        "axios": "^0.21.1",
-        "cookieparser": "^0.1.0",
-        "js-cookie": "^3.0.0",
-        "nuxt": "^2.15.7"
-    }
+  "name": "RealWorld-NuxtJS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1",
+    "cookieparser": "^0.1.0",
+    "js-cookie": "^3.0.0",
+    "nuxt": "^2.15.7"
+  }
 }
