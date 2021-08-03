@@ -78,7 +78,7 @@ export default {
 
         // 跳转至文章详情
         _self.$router.push({
-          name: 'article',
+          name: 'articleInfo',
           params: {
             slug: data.article.slug,
           },

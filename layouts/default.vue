@@ -7,7 +7,7 @@
           :to="{
             name: 'home',
           }"
-          class="nav-link active"
+          class="nav-link"
         >
           conduit
         </nuxt-link>
@@ -18,12 +18,13 @@
               :to="{
                 name: 'home',
               }"
-              class="nav-link active"
+              exact
+              class="nav-link"
             >
               Home
             </nuxt-link>
           </li>
-          <!-- 登录状态 -->
+          <!-- 已登录状态 -->
           <template v-if="user">
             <li class="nav-item">
               <!-- Add "active" class when you're on that page" -->
@@ -32,31 +33,42 @@
                 :to="{
                   name: 'editor',
                 }"
-                class="nav-link active"
+                exact
+                class="nav-link"
               >
                 <i class="ion-compose"></i>&nbsp;New Article
               </nuxt-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <nuxt-link
                 :to="{
                   name: 'settings',
                 }"
-                class="nav-link active"
+                exact
+                class="nav-link"
                 ><i class="ion-compose"></i>&nbsp;Settings
               </nuxt-link>
-            </li>
+            </li> -->
+            <!-- :to="{
+                  name: 'profile',
+                  params: { username: user.username },
+                }" -->
             <li class="nav-item">
-              <nuxt-link
+              <span
                 :to="{
                   name: 'profile',
                   params: { username: user.username },
                 }"
-                class="nav-link active"
+                class="nav-link"
               >
-                <img :src="user.image" alt="用户头像" v-if="user.image"/>
+                <img :src="user.image" alt="用户头像" v-if="user.image" />
                 {{ user.username }}
-              </nuxt-link>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" style="cursor:pointer" @click="logout">
+                logout
+              </span>
             </li>
           </template>
           <!-- 登出状态 -->
@@ -66,7 +78,7 @@
                 :to="{
                   name: 'login',
                 }"
-                class="nav-link active"
+                class="nav-link"
                 ><i class="ion-compose"></i>&nbsp;Sign in</nuxt-link
               >
             </li>
@@ -75,7 +87,7 @@
                 :to="{
                   name: 'register',
                 }"
-                class="nav-link active"
+                class="nav-link"
                 ><i class="ion-compose"></i>&nbsp;Sign up
               </nuxt-link>
             </li>
@@ -99,6 +111,7 @@
   </div>
 </template>
 <script>
+const Cookie = process.client ? require('js-cookie') : undefined
 import { mapState } from 'vuex'
 export default {
   name: 'default',
@@ -115,6 +128,13 @@ export default {
           },
         ], */
     }
+  },
+  methods: {
+    logout() {
+      Cookie.remove('user')
+      this.$store.commit('setUser', undefined)
+      this.$router.push('/')
+    },
   },
 }
 </script>

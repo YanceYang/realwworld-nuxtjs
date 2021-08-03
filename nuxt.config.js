@@ -14,6 +14,7 @@ export default {
     port: '80',
   },
   router: {
+    linkActiveClass: 'active',
     extendRoutes(routes, resolve) {
       // 清除默路由表
       routes.splice(0)
@@ -23,6 +24,7 @@ export default {
           {
             name: 'home',
             path: '/',
+            linkActiveClass: 'active',
             component: resolve(__dirname, 'pages/home/'),
           },
           {
@@ -48,10 +50,11 @@ export default {
           {
             name: 'editor',
             path: '/editor',
+            linkActiveClass: 'active',
             component: resolve(__dirname, 'pages/article/editor'),
           },
           {
-            name: 'article',
+            name: 'articleInfo',
             path: '/article/:slug',
             component: resolve(__dirname, 'pages/article/'),
           },
