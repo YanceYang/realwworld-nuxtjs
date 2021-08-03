@@ -6,7 +6,7 @@
         <p>A place to share your knowledge.</p>
       </div>
     </div>
-
+    <h1>自动部署测试</h1>
     <!-- <div class="container page">
       <div class="row">
         <div class="col-md-9">
@@ -88,7 +88,7 @@
 
 <script>
 export default {
-  name:'home'
+  name: 'home',
 }
 </script>
 
